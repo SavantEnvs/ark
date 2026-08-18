@@ -1,0 +1,47 @@
+#00000000000
+(mut source [1 2 0 4])
+#0000000000
+(let length (len source))
+
+(let n 1)
+
+(let foo (fun () {
+  #00000000000
+  (mut h0ad01 (head source))
+  #00000000000
+  (mut tail_1 (tail source))
+
+#00000000000
+  (mut copy_1 source)
+   #0000000000000
+  (set copy_1 (head source))
+  #0000000000000
+  (set copy_1 (tail source))
+
+  #00000000000000000000
+  (append! source 6)
+
+  #00000000000
+  (@ source n) }))
+(foo)
+
+#00000000000000000000
+(mut head_2 (head source))
+(print head_2)
+#00000000000000000000
+(mut tail_2 (tail source))
+
+(mut copy_2 source)
+#0000000000000000000000
+(set copy_2 (head source))
+#0000000000000000000000
+(set copy_2 (tail source))
+
+#00000000000000000000000
+(@ source n)
+
+#0000000000000000000
+(@ source 0)
+
+#00000000000000000000000000
+(append! tail_2 5)

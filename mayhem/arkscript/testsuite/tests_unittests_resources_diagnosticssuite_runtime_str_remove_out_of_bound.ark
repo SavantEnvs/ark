@@ -1,0 +1,1 @@
+(builtin__string:removeAt "000" 5)

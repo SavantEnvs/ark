@@ -1,0 +1,20 @@
+(fun () ())
+(fun ( a b ) ( + a   b))
+(
+fun
+(
+a) {
+a
+})
+(call m0 ma0be)
+(call (fun () {
+    h0000
+}) ma0be)
+(fun #00000
+ (#00
+ a
+ b
+ #00000000
+  &c) #00000
+  {})
+(let f000(fun () (if t000 f0000 n00)))

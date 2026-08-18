@@ -1,0 +1,25 @@
+#00000000000000000000000000000000000000000
+(let egg (fun (bar) (print bar)))
+#0000000000000000000000000000000000000000000000
+(let data ["00000000" "00" "0000000000"])
+#0000000000000000000000000000000000000000000000000000000000
+(mut callbacks [])
+
+(print "000000" data)
+(print "00000000000000000000")
+(mut acc 0)
+#000000000000000000000000000000000000000
+(while (!= acc (len data)) {
+    (mut d (@ data acc))
+    (set callbacks (append callbacks (fun (&d) (egg d))))
+    (set acc (+ 1 acc))})
+
+#000000000000000000000000000000
+(set acc 0)
+(while (!= acc (len callbacks)) {
+    (mut var (@ callbacks acc))
+    (print "0000000 " var.d)
+    (puts "000000000000000000000000" acc "0 ")
+    (mut st0red (@ callbacks acc))
+    (st0red)
+    (set acc (+ 1 acc))})

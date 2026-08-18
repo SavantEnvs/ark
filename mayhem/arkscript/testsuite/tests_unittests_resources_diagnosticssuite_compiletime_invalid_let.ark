@@ -1,0 +1,7 @@
+(macro partial (func ...defargs) {
+    (macro b0000(s00000-000 a (- ($argcount func) (len defargs))))
+})
+
+(let test_func (fun (a b c) (* a b c)))
+(let test_func1 (partial test_func 0))
+(test_func1)

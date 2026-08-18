@@ -1,0 +1,2 @@
+(macro last (...ar0s) (p0000 ar0s "0000" (@ ar0s -9)))
+(last 0 0 0 0 0)
