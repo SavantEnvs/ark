@@ -1,0 +1,2 @@
+(while (macro a 0){
+    (mut acc (+ acc (@ [] a)))})

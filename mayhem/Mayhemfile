@@ -1,0 +1,26 @@
+project: savantenvs/ark
+target: arkscript
+
+# In-process libFuzzer harness (mayhem/harnesses/fuzz_arkscript.cpp): compiles the fuzzer bytes
+# as ArkScript source (parser -> import solver -> macro processor -> name resolver -> AST
+# optimiser -> IR -> bytecode compiler) and then EXECUTES the resulting bytecode in the VM --
+# both surfaces named in the repo intel, and the same combination upstream's own AFL fuzz setup
+# exercises (tests/fuzzing/docker/2-fuzz.sh runs `arkscript @@ -L lib`, i.e. compile+run).
+# Preserves the fork's historical target name `arkscript` (previously a file-input CLI-wrapper
+# target, `arkscript -L /mayhem/lib -c @@`) so accumulated run history / defects stay attached,
+# while moving to a proper instrumented libFuzzer target per SPEC 6.2 item 11.
+#
+# BOUNDING (SPEC 6b): no harness-side timer or watchdog -- Mayhem owns timeouts. A fuzzed
+# `(while true ...)` or `(sys:sleep 1e9)` is a hang finding, bounded per exec by the `timeout:`
+# below (seconds) like any other in-process libFuzzer target. It is generous on purpose: legit
+# seeds take up to ~2s under ASan+UBSan on a loaded dev box (the compiletime_list_65536_args,
+# ackermann and n_queens seeds), and training hosts can be far slower, so Mayhem's short default
+# would misreport them as hangs.
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/arkscript/testsuite
+cmds:
+  - cmd: /mayhem/arkscript
+    libfuzzer: true
+    dictionary: /mayhem/mayhem/arkscript/arkscript.dict
+    timeout: 10

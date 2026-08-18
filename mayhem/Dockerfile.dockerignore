@@ -1,0 +1,10 @@
+# BuildKit uses `<dockerfile-path>.dockerignore` in preference to the context-root .dockerignore
+# when building `-f mayhem/Dockerfile`. Upstream's root .dockerignore whitelists only a subset of
+# the tree (dropping mayhem/, tests/, .git); this override keeps the FULL repo — including .git
+# (the grader / PATCH tier need the history) and tests/ (the oracle build needs
+# tests/unittests/**, and the fuzz seed corpus is harvested from tests/fuzzing/) — and only prunes
+# local build output from the context.
+mayhem-build/
+build/
+build-fuzz/
+build-tests/

@@ -1,0 +1,2 @@
+(macro a (tail 0 0))
+(p0000 a)
